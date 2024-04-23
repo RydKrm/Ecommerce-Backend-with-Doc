@@ -1,0 +1,14 @@
+
+
+JWT (JSON Web Tokens) and bcrypt are both commonly used in authentication systems, but they serve different purposes and operate at different levels of the authentication process:
+
+Purpose:
+JWT: JWT is used for authentication and authorization. It provides a way to securely transmit information between parties as a JSON object. JWTs are commonly used for stateless authentication in web applications, where the server generates a token containing user information upon successful login, and the client sends this token with each subsequent request to access protected resources.
+bcrypt: bcrypt is a password-hashing function designed to securely hash passwords. It is used to protect user passwords stored in the database. bcrypt takes a password as input and produces a hash string that can be stored in the database. When a user logs in, bcrypt is used to hash the provided password, and the resulting hash is compared with the stored hash to verify the password's correctness.
+Usage:
+JWT: JWT is typically used during the authentication process to generate and verify tokens. After a user logs in, the server generates a JWT containing user information (e.g., user ID, username) and signs it with a secret key. This token is then sent to the client, which includes it in subsequent requests. The server verifies the token's authenticity and extracts user information from it to authorize access to protected resources.
+bcrypt: bcrypt is used to securely hash user passwords before storing them in the database. When a user registers or updates their password, bcrypt is used to hash the plaintext password before saving it to the database. When a user logs in, bcrypt is used to hash the provided password, and the resulting hash is compared with the stored hash in the database to authenticate the user.
+Security:
+JWT: JWT provides a mechanism for securely transmitting information between parties. However, the security of JWT depends on factors such as the strength of the cryptographic algorithm used, the complexity of the secret key, and the implementation of token validation and verification.
+bcrypt: bcrypt is specifically designed for securely hashing passwords. It incorporates salting and hashing algorithms that make it resistant to brute-force attacks and rainbow table attacks. bcrypt is considered one of the most secure password-hashing algorithms available.
+In summary, JWT and bcrypt serve different roles in the authentication process. JWT is used for generating and verifying authentication tokens, while bcrypt is used for securely hashing and verifying user passwords stored in the database. Both are important components of a secure authentication system and are often used together in combination.

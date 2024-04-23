@@ -1,0 +1,63 @@
+Users/Customer Table:
+UserID (Primary Key)
+Username
+Password (encrypted)
+Email
+Address
+Phone
+Other relevant user information
+
+
+Products Table:
+ProductID (Primary Key)
+Name
+Description
+Price
+CategoryID (Foreign Key)
+Stock Quantity
+Other product-related information
+
+Categories Table:
+CategoryID (Primary Key)
+Name
+Description
+ParentCategoryID (if implementing a hierarchical category structure)
+
+
+Orders Table:
+OrderID (Primary Key)
+UserID (Foreign Key)
+OrderDate
+TotalAmount
+ShippingAddress
+Status (e.g., pending, shipped, delivered)
+
+
+OrderDetails Table:
+OrderDetailID (Primary Key)
+OrderID (Foreign Key)
+ProductID (Foreign Key)
+Quantity
+Price
+
+
+Payments Table:
+PaymentID (Primary Key)
+OrderID (Foreign Key)
+Amount
+PaymentDate
+PaymentMethod
+
+
+Reviews/Ratings Table:
+ReviewID (Primary Key)
+UserID (Foreign Key)
+ProductID (Foreign Key)
+Rating
+Comment
+Date
+Cart Table (if implementing a shopping cart functionality):
+CartID (Primary Key)
+UserID (Foreign Key)
+ProductID (Foreign Key)
+Quantity
