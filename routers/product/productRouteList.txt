@@ -1,0 +1,37 @@
+// * add product
+
+// * update product
+
+// * delete product
+
+// * get single product
+
+// * get all product
+
+// * change status
+
+// * add like
+
+// * update buying price 
+
+// * delete like
+
+// * add comment
+
+// * get all comment
+
+// * get single comment
+
+// * delete comment
+
+// * add Ratting
+
+// * get all ratting
+
+// * get product ratting
+
+// * delete ratting
+
+// * increase totalSelling
+
+// * increase totalProductView

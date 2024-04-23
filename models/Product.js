@@ -9,7 +9,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  price: {
+  sellingPrice: {
+    type: Number,
+    required: true,
+  },
+  buyingPrice: {
     type: Number,
     required: true,
   },
@@ -57,6 +61,11 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  status: {
+    type: Boolean,
+    default: true,
+  },
+
   // Other product-related information fields can be added here
 });
 

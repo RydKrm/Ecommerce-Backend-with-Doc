@@ -5,7 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
-const customerProfileRouter = require("./routers/customerRouter/customerProfileRouter");
+const customerProfileRouter = require("./routers/customer/customerProfileRouter");
 
 const app = express();
 // eslint-disable-next-line

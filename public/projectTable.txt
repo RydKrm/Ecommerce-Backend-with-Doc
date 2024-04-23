@@ -15,6 +15,7 @@ Description
 Price
 CategoryID (Foreign Key)
 Stock Quantity
+
 Other product-related information
 
 Categories Table:

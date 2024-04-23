@@ -1,0 +1,13 @@
+// * add category
+
+// * get all category
+
+// * get single category
+
+// * get all category with product quantity
+
+// * update category status
+
+// * update category
+
+// * delete category
