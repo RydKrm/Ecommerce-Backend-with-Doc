@@ -1,8 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
-const { negativeResponse, positiveResponse } = require("../../common/response");
 const Customer = require("../../models/Customer");
 const jwt = require("jsonwebtoken");
+const { negativeResponse, positiveResponse } = require("../../utils/response");
 
 exports.createCustomerController = asyncHandler(async (req, res) => {
   const { name, email, password, phone, address } = req.body;
