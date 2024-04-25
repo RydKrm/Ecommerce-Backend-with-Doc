@@ -17,7 +17,7 @@ const sendText = async function (phoneNumber, message) {
     const smsSend = await axios.post(
       "https://gicclients.com/sms/send-purple-sms",
       { ...fields },
-      { headers: headers }
+      { headers: headers },
     );
     // console.log({ smsSend });
   } catch (e) {

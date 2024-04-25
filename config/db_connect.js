@@ -11,7 +11,7 @@ const db = async () => {
       },
       () => {
         console.log("databes has been conected form db_connect");
-      }
+      },
     );
   } catch (error) {
     throw new Error(error);

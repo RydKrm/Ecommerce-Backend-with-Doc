@@ -15,7 +15,7 @@ customerProfileRouter.post("/login", loginCustomerController);
 customerProfileRouter.get(
   "/getSingleCustomer/:userId",
   customerProtect,
-  getSingleCustomerController
+  getSingleCustomerController,
 );
 
 module.exports = customerProfileRouter;

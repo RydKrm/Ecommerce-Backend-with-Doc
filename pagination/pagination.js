@@ -53,5 +53,5 @@ exports.pagination = expressAsyncHandler(
       pagination,
       total,
     };
-  }
+  },
 );

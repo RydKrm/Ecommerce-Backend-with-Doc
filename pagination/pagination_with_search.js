@@ -3,7 +3,7 @@ exports.pagination_with_search = async (
   query,
   model,
   options = { populate: [""], select: "" },
-  search = { query: "", fields: [""] }
+  search = { query: "", fields: [""] },
 ) => {
   try {
     let page = 1;

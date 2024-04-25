@@ -1,5 +1,4 @@
 // app.js
-
 require("dotenv").config();
 
 const express = require("express");
@@ -26,11 +25,11 @@ app.use(
     threshold: 100 * 1000,
     filter: (req, res) => {
       if (req.headers["x-on-compression"]) {
-        return false;
+        return false
       }
       return compression.filter(req, res);
     },
-  })
+  }),
 );
 
 // rate limit

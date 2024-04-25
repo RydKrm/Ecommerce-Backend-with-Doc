@@ -20,7 +20,7 @@ exports.error_handler = (err, req, res, next) => {
   }
   const newErrorResponse = createError(
     errorData.status || 500,
-    errorData.message || "Internal server error"
+    errorData.message || "Internal server error",
   );
   return res.status(newErrorResponse.status).json({
     success: false,

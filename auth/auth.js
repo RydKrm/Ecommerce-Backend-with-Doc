@@ -25,7 +25,7 @@ const auth = (roles = []) => {
           next();
         } else {
           return next(
-            createError(403, `Only ${roles.toString()} can do this request.`)
+            createError(403, `Only ${roles.toString()} can do this request.`),
           );
         }
       } else {

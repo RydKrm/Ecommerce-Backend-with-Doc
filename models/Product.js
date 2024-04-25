@@ -42,21 +42,21 @@ const productSchema = new mongoose.Schema({
       ref: "Comment", // Assuming each user can only like a product once
     },
   ],
-  ratings: [
-    {
-      userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
-      value: {
-        type: Number,
-        min: 1,
-        max: 5,
-        required: true,
-      },
-    },
-  ],
+  // ratings: [
+  //   {
+  //     userId: {
+  //       type: mongoose.Schema.Types.ObjectId,
+  //       ref: "User",
+  //       required: true,
+  //     },
+  //     value: {
+  //       type: Number,
+  //       min: 1,
+  //       max: 5,
+  //       required: true,
+  //     },
+  //   },
+  // ],
   totalSelling: {
     type: Number,
     default: 0,
@@ -64,6 +64,10 @@ const productSchema = new mongoose.Schema({
   totalProductViews: {
     type: Number,
     default: 0,
+  },
+  totalReview: {
+    type: Number,
+    default: 0
   },
   status: {
     type: Boolean,

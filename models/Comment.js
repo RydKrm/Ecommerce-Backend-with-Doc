@@ -7,6 +7,11 @@ const commentSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  productId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+    required: true
+  },
   text: {
     type: String,
     required: true,
