@@ -6,7 +6,7 @@ const { updateStatesById } = require("../../utils/updateStatusById");
 
 // @desc create product
 // @route POST api/product/create
-exports.create = asyncHandler(async (req, res) => {
+exports.create = asyncHandler(async (req, res) => {  
     const {
         name,
         description,

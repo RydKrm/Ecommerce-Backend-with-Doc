@@ -5,6 +5,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const customerProfileRouter = require("./routers/customer/customerProfileRouter");
+const { categoryCRUDRouter } = require("./routers/category/categoryCRUDRoute");
 const { error_handler } = require("./error/error_handler");
 const compression = require("compression");
 
@@ -25,7 +26,7 @@ app.use(
     threshold: 100 * 1000,
     filter: (req, res) => {
       if (req.headers["x-on-compression"]) {
-        return false
+        return false;
       }
       return compression.filter(req, res);
     },
@@ -52,7 +53,8 @@ app.get("/api", (req, res) => {
 
 app.use(express.json());
 app.use(morgan("dev"));
-app.use("/customer", customerProfileRouter);
+app.use("/api/customer", customerProfileRouter);
+app.use("/api/category", categoryCRUDRouter);
 // app.use("/products", productRoutes);
 // app.use("/orders", orderRoutes);
 

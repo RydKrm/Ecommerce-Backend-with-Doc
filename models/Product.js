@@ -5,6 +5,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: [String],
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -42,21 +46,6 @@ const productSchema = new mongoose.Schema({
       ref: "Comment", // Assuming each user can only like a product once
     },
   ],
-  // ratings: [
-  //   {
-  //     userId: {
-  //       type: mongoose.Schema.Types.ObjectId,
-  //       ref: "User",
-  //       required: true,
-  //     },
-  //     value: {
-  //       type: Number,
-  //       min: 1,
-  //       max: 5,
-  //       required: true,
-  //     },
-  //   },
-  // ],
   totalSelling: {
     type: Number,
     default: 0,
@@ -67,7 +56,7 @@ const productSchema = new mongoose.Schema({
   },
   totalReview: {
     type: Number,
-    default: 0
+    default: 0,
   },
   status: {
     type: Boolean,

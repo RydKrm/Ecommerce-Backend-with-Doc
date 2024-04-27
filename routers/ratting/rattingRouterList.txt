@@ -1,0 +1,7 @@
+//? create ratting
+//? get all product ratting 
+//? get all user ratting 
+//? update ratting 
+//? get single ratting
+//? delete ratting 
+//? 
