@@ -74,3 +74,14 @@ exports.deleteComment = asyncHandler(async (req, res) => {
     if (comment) positiveResponse(res, "Comment deleted")
     else negativeResponse(res, "Comment not found")
 })
+
+// * increase totalSelling
+
+//@desc increase totalProductView
+//@route POST api/product/increaseView/:fieldId
+exports.increaseView = asyncHandler(async (req, res) => {
+    const { fieldId } = req.params;
+    const product = await Product.findByIdAndUpdate(fieldId, { $inc: { totalProductView: 1 } });
+    if (product) positiveResponse(res, "Product view increase")
+    else negativeResponse(res, "Product not found")
+}) 
