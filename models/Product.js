@@ -40,12 +40,6 @@ const productSchema = new mongoose.Schema({
       ref: "User", // Assuming each user can only like a product once
     },
   ],
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment", // Assuming each user can only like a product once
-    },
-  ],
   totalSelling: {
     type: Number,
     default: 0,

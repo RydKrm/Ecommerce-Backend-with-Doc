@@ -4,10 +4,15 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+// const bodyParser = require("body-parser");
+
 const customerProfileRouter = require("./routers/customer/customerProfileRouter");
 const { categoryCRUDRouter } = require("./routers/category/categoryCRUDRoute");
 const { error_handler } = require("./error/error_handler");
-const compression = require("compression");
+// const compression = require("compression");
+const productCRUD = require("./routers/product/productCRUDRoute");
+const productEngagement = require("./routers/product/productEngagementRoute");
+const cartRoute = require("./routers/cart/cartRoute");
 
 const app = express();
 // eslint-disable-next-line
@@ -20,18 +25,18 @@ mongoose
   .then(() => console.log("database connected "))
   .catch((err) => console.log(err));
 
-app.use(
-  compression({
-    level: 6,
-    threshold: 100 * 1000,
-    filter: (req, res) => {
-      if (req.headers["x-on-compression"]) {
-        return false;
-      }
-      return compression.filter(req, res);
-    },
-  }),
-);
+// app.use(
+//   compression({
+//     level: 6,
+//     threshold: 100 * 1000,
+//     filter: (req, res) => {
+//       if (req.headers["x-on-compression"]) {
+//         return false;
+//       }
+//       return compression.filter(req, res);
+//     },
+//   }),
+// );
 
 // rate limit
 // app.use(
@@ -52,9 +57,13 @@ app.get("/api", (req, res) => {
 });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use("/api/customer", customerProfileRouter);
 app.use("/api/category", categoryCRUDRouter);
+app.use("/api/product", productCRUD, productEngagement);
+app.use("/api/cart", cartRoute);
+
 // app.use("/products", productRoutes);
 // app.use("/orders", orderRoutes);
 

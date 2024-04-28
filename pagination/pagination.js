@@ -4,7 +4,7 @@ exports.pagination = expressAsyncHandler(
   async (req, query, model, options = {}) => {
     let now;
     let page = 1,
-      limit = 10;
+      limit = 100;
     const total = await model.countDocuments(query);
     //check there is page in query
     if (req.query.page) {

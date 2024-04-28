@@ -12,8 +12,6 @@
 
 // * add like
 
-// * update buying price 
-
 // * delete like
 
 // * add comment

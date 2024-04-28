@@ -10,9 +10,9 @@ const commentSchema = new mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
-    required: true
+    required: true,
   },
-  text: {
+  comment: {
     type: String,
     required: true,
   },

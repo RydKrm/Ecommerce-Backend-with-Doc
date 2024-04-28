@@ -6,6 +6,11 @@ const rattingSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  productId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+    required: true,
+  },
   value: {
     type: Number,
     min: 1,
@@ -20,6 +25,6 @@ const rattingSchema = new mongoose.Schema({
   },
 });
 
-const Ratting = mongoose.model("Ratting", rattingSchema);
+const Rating = mongoose.model("Rating", rattingSchema);
 
-module.exports = Ratting;
+module.exports = Rating;

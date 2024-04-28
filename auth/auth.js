@@ -12,14 +12,15 @@ const auth = (roles = []) => {
     const token = req.headers.authorization.replace("Bearer ", "");
     try {
       // eslint-disable-next-line
-      const isvarified = await jwt.verify(token, process.env.TOKENSECRATE);
+      const isvarified = await jwt.verify(token, process.env.CUSTOMER_SECRET);
       if (!isvarified) {
         return next(createError(403, "Invalid Token"));
       }
+
       if (roles.length > 0) {
         if (roles.includes(isvarified.role)) {
           req[isvarified.role] = {
-            _id: isvarified.id,
+            _id: isvarified._id,
             role: isvarified.role,
           };
           next();

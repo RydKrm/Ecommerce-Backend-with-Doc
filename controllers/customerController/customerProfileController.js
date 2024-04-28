@@ -8,7 +8,7 @@ exports.createCustomerController = asyncHandler(async (req, res) => {
   const { name, email, password, phone, address } = req.body;
   if (!name || !email || !password)
     return negativeResponse(res, "Name, email, phone is required");
-
+  console.log("form data ", req.body);
   //? checking for email already exists or not
   const emailChecker = await Customer.findOne({ email });
   if (emailChecker) return negativeResponse(res, "Email already exists");
@@ -24,26 +24,32 @@ exports.createCustomerController = asyncHandler(async (req, res) => {
 
 exports.loginCustomerController = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  // ? check for email exists or not
-  if (!email || !password)
-    return negativeResponse(res, "Email and password is required");
 
-  //   ? find user profile
+  // return res.json(req.body);
+  //  check for email exists or not
+  if (!email || !password) {
+    return negativeResponse(res, "Email and password is required");
+  }
+
+  //   find user profile
   const customer = await Customer.findOne({ email });
   if (!customer) return negativeResponse(res, "Invalid email or password");
 
-  // ? check for status off or not
+  //  check for status off or not
   if (!customer.status) return negativeResponse(res, "User status is off");
 
-  // ? check for password validate
+  //  check for password validate
   const isValid = await bcrypt.compare(password, customer.password);
   if (!isValid) return negativeResponse(res, "Invalid email or password");
 
-  // ? generate JWT Token
+  //  generate JWT Token
   // eslint-disable-next-line
-  const token = jwt.sign({ _id: customer._id }, process.env.CUSTOMER_SECRET);
+  const token = jwt.sign(
+    { _id: customer._id, role: "customer" },
+    process.env.CUSTOMER_SECRET,
+  );
 
-  // ? response back with with token
+  //  response back with with token
   positiveResponse(res, "Logged in successfully", {
     token,
     userId: customer._id,
