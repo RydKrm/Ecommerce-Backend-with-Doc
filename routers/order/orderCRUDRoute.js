@@ -1,0 +1,11 @@
+const express = require("express");
+const orderCRUD = express.Router();
+
+// 1. Add order 
+// 2. update order before shipping 
+// 3. update status 
+// 4. update shipping address 
+// 5. cancel the order before shipping
+// 6. update the quantity 
+
+module.exports = orderCRUD;

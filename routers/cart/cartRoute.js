@@ -25,7 +25,7 @@ cartRoute.get(
     req.body["userId"] = req.customer._id;
     next();
   },
-  read(Cart),
+  read(Cart, { populate: "productId" }),
 );
 // update product quantity
 cartRoute.patch("/update/:fieldId", update(Cart));
