@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // Define schema for Order
 const orderSchema = new mongoose.Schema({
-  userID: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
@@ -29,12 +29,12 @@ const orderSchema = new mongoose.Schema({
 
 // Define schema for OrderDetail
 const orderDetailSchema = new mongoose.Schema({
-  orderID: {
+  orderId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Order",
     required: true,
   },
-  productID: {
+  productId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
     required: true,

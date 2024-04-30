@@ -13,6 +13,7 @@ const { error_handler } = require("./error/error_handler");
 const productCRUD = require("./routers/product/productCRUDRoute");
 const productEngagement = require("./routers/product/productEngagementRoute");
 const cartRoute = require("./routers/cart/cartRoute");
+const orderCRUD = require("./routers/order/orderCRUDRoute");
 
 const app = express();
 // eslint-disable-next-line
@@ -63,6 +64,7 @@ app.use("/api/customer", customerProfileRouter);
 app.use("/api/category", categoryCRUDRouter);
 app.use("/api/product", productCRUD, productEngagement);
 app.use("/api/cart", cartRoute);
+app.use("/api/order", orderCRUD);
 
 // app.use("/products", productRoutes);
 // app.use("/orders", orderRoutes);

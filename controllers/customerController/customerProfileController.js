@@ -43,9 +43,10 @@ exports.loginCustomerController = asyncHandler(async (req, res) => {
   if (!isValid) return negativeResponse(res, "Invalid email or password");
 
   //  generate JWT Token
-  // eslint-disable-next-line
+
   const token = jwt.sign(
     { _id: customer._id, role: "customer" },
+    // eslint-disable-next-line
     process.env.CUSTOMER_SECRET,
   );
 

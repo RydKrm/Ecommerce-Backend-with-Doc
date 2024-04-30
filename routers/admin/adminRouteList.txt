@@ -1,0 +1,45 @@
+Product 📟
+get all product list 
+on/off status 
+edit product
+delete product
+get all comment of a product
+get all ratting of a product
+get product all like person
+see the total income from a product 
+check the product performance 
+
+Dashboard 📺 
+total number of product, order, comment, like, rating, total earning
+list of all people who buy that product
+most selling product 10 
+most buying person                
+
+Category 🌲
+create a category
+delete a category
+update a category
+
+see all category with total number of product
+see best selling product under a category
+
+
+GRAPH 📉
+product vs selling price 
+per day/month/year income 
+every day total amount of product selling
+day/month/year vs total amount of selling
+
+Order 😗
+find the pending/delivered/shipped product 
+change their order status
+
+Customer 🧑‍🤝‍🧑 
+see total amount of spend
+see total number of product buy
+see all comment
+see all ratting
+
+
+
+
