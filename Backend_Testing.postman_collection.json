@@ -1,0 +1,1495 @@
+{
+	"info": {
+		"_postman_id": "ce4bb8fd-05cb-416e-b4c4-8cb1a4165f31",
+		"name": "Backend_Testing",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) in \"Tests\" to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16596381"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Riyad21\",\r\n    \"email\":\"riyad21@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"phone\":\"01732461621\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/customer/signup",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"riyad@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/customer/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/customer/getSingleCustomer/66273a1c924cfc0b98c78816",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"customer",
+								"getSingleCustomer",
+								"66273a1c924cfc0b98c78816"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "riaz.i3216@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/customer/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Rating",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All commet",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Comment",
+					"item": [
+						{
+							"name": "Create Comment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\":\"662dfb51857112707b00cc09\",\r\n    \"comment\":\"comment 8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/product/createComment",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"createComment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Comment by Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/allCommentbyProduct/662dfb51857112707b00cc09",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"allCommentbyProduct",
+										"662dfb51857112707b00cc09"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Comment by User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/allCommentByUser/66273af5924cfc0b98c7881a",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"allCommentByUser",
+										"66273af5924cfc0b98c7881a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Comment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/getSingleComment/662dfb22857112707b00cc01",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"getSingleComment",
+										"662dfb22857112707b00cc01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Comment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/deleteComment/662dfb76857112707b00cc0f",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"deleteComment",
+										"662dfb76857112707b00cc0f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Comment",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comment\":\"Comment -  01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/product/updateComment/662df4a74532a6bfcdbb3e86",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"updateComment",
+										"662df4a74532a6bfcdbb3e86"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Get Single Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/getSingle/662dd984e2a5ea42b82b7400",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"getSingle",
+										"662dd984e2a5ea42b82b7400"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/getAll",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"getAll"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product find by",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/getAllTrue",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"getAllTrue"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ratting",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"value\":5,\r\n    \"description\":\"Ratting Description - 8 \",\r\n    \"productId\":\"662dd984e2a5ea42b82b7400\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/product/rating/create",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"rating",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Rating",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"value\":4.5,\r\n    \"description\":\"Ratting Description - 2 \"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/product/rating/update/662e0dd45310cb817d4d6afa",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"rating",
+										"update",
+										"662e0dd45310cb817d4d6afa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Rating",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/rating/getSingle/662e1202a45adac743050cac",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"rating",
+										"getSingle",
+										"662e1202a45adac743050cac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all product ratting Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/rating/getAllByProduct/662dd984e2a5ea42b82b7400",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"rating",
+										"getAllByProduct",
+										"662dd984e2a5ea42b82b7400"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Rating by user Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/rating/getAllByUser/66273af5924cfc0b98c7881a?limit=3&page=1",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"rating",
+										"getAllByUser",
+										"66273af5924cfc0b98c7881a"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "3"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Rating Copy",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/product/rating/delete/662e11f3a45adac743050caa",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"rating",
+										"delete",
+										"662e11f3a45adac743050caa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get All Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/category/getAll?page=3&limit=3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"getAll"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/category/getSingle/662cb685bc0ee5346c4328d6",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"getSingle",
+								"662cb685bc0ee5346c4328d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get True Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/category/getTrue",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"getTrue"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add product to cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"662dd984e2a5ea42b82b7401\",\r\n    \"quantity\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/cart/add",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Cart Item by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/cart/allProductByUser",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"allProductByUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/cart/update/662e2dafbdf3af07d1c61636",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"update",
+								"662e2dafbdf3af07d1c61636"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cart Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/cart/delete/662e2dafbdf3af07d1c61636",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								"delete",
+								"662e2dafbdf3af07d1c61636"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Add Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{   \r\n    \"shippingAddress\":\"Binodpur Rajshahi\",\r\n    \"orderDate\":\"11/28/2023\",\r\n    \"orderList\":[\r\n    {\r\n    \"productId\":\"662dd984e2a5ea42b82b7400\",\r\n    \"quantity\":1,\r\n    \"price\":200\r\n  },\r\n  {\r\n    \"productId\":\"662dfb51857112707b00cc09\",\r\n    \"quantity\":1,\r\n    \"price\":22\r\n  },\r\n  {\r\n    \"productId\":\"662dd984e2a5ea42b82b7400\",\r\n    \"quantity\":4,\r\n    \"price\":230\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/order/addOrder",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"addOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Single Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/order/getOrderById/6630678459b6db3d243710f6",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"getOrderById",
+								"6630678459b6db3d243710f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/order/getOrderByUser",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"getOrderByUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Shippint Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"shippingAddress\":\"Rajshahi, Binodpur\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/order/updateShippingAddress/6630678459b6db3d243710f6",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"updateShippingAddress",
+								"6630678459b6db3d243710f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order Quantity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/order/updateQuantity/6630678459b6db3d243710f8",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"updateQuantity",
+								"6630678459b6db3d243710f8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Dashboard",
+					"item": []
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "CRUD",
+							"item": [
+								{
+									"name": "Get All Product list",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/product/getAll",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"getAll"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"Coffe Mug 2\",\r\n    \"description\":\"product description 3\",\r\n    \"previousPrice\":380,\r\n    \"sellingPrice\":250,\r\n    \"buyingPrice\":200,\r\n    \"category\":\"662cb685bc0ee5346c4328d6\",\r\n    \"stockQuantity\":10\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/product/create",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Product Update",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"Coffe Mug 2\",\r\n    \"description\":\"product description 2\",\r\n    \"previousPrice\":500,\r\n    \"sellingPrice\":350,\r\n    \"buyingPrice\":200,\r\n    \"category\":\"662cb685bc0ee5346c4328d6\",\r\n    \"stockQuantity\":15\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}/api/product/update/662dd984e2a5ea42b82b7400",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"update",
+												"662dd984e2a5ea42b82b7400"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Product By Id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/product/delete/662dda346c677358c0bdf19a",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"delete",
+												"662dda346c677358c0bdf19a"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Status",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/product/updateStatus/662dd984e2a5ea42b82b7400",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"updateStatus",
+												"662dd984e2a5ea42b82b7400"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Rating",
+							"item": [
+								{
+									"name": "Get all product ratting",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/product/rating/getAllByProduct/662dd984e2a5ea42b82b7400",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"rating",
+												"getAllByProduct",
+												"662dd984e2a5ea42b82b7400"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Rating by user",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/product/rating/getAllByUser/66273af5924cfc0b98c7881a?limit=3&page=1",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"rating",
+												"getAllByUser",
+												"66273af5924cfc0b98c7881a"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "3"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Rating",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseURL}}/api/product/rating/delete/662e11f3a45adac743050caa",
+											"host": [
+												"{{baseURL}}"
+											],
+											"path": [
+												"api",
+												"product",
+												"rating",
+												"delete",
+												"662e11f3a45adac743050caa"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Create Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Book15\",\r\n    \"description\":\"Vauable think 9\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/category/create",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/category/delete/662cc176a269c63f4063d8a3",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"category",
+										"delete",
+										"662cc176a269c63f4063d8a3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\":\"description 10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/category/update/662cb685bc0ee5346c4328d6",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"category",
+										"update",
+										"662cb685bc0ee5346c4328d6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Category With Product",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Category With Best selling Product",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Get Order Single Order Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/order/getOrderById/6630678459b6db3d243710f6",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"getOrderById",
+										"6630678459b6db3d243710f6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Order By User Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"delivered\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/order/getOrderByUser",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"getOrderByUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Order Status Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"delivered\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/api/order/updateStatus/6630678459b6db3d243710f6",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"updateStatus",
+										"6630678459b6db3d243710f6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Complete Order Copy",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/order/completeOrder/66307294d7b091584999cdbc",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"completeOrder",
+										"66307294d7b091584999cdbc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/api/order/cancelOrder/663072dad7b091584999cdc6",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"api",
+										"order",
+										"cancelOrder",
+										"663072dad7b091584999cdc6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Monthly Report",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		},
+		{
+			"key": "customerToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI3M2FmNTkyNGNmYzBiOThjNzg4MWEiLCJpYXQiOjE3MTM4NDcxMDh9.2L5GTsHQBYVfvhYPAtIJSk-k84pczUTYxs1tlyL9wnY"
+		},
+		{
+			"key": "baseURL",
+			"value": "htpp://localhost:8000"
+		}
+	]
+}

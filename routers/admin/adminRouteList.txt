@@ -6,8 +6,7 @@ delete product
 get all comment of a product
 get all ratting of a product
 get product all like person
-see the total income from a product 
-check the product performance 
+see the total income from a product +*0.+check the product performance 
 
 Dashboard 📺 
 total number of product, order, comment, like, rating, total earning

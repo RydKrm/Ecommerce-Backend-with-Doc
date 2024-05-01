@@ -27,6 +27,30 @@ const CustomerSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  totalProductBuy: {
+    type: Number,
+    default: 0
+  },
+  totalComment: {
+    type: Number,
+    default: 0
+  },
+  totalReview: {
+    type: Number,
+    default: 0
+  },
+  totalSpend: {
+    type: Number,
+    default: 0
+  },
+  highestPriceProduct: {
+    type: Number,
+    default: 0
+  },
+  lowestPriceProduct: {
+    type: Number,
+    default: 0
+  }
 });
 
 // Hash password before saving to the database

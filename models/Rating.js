@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Product = require("./Product");
 
 const rattingSchema = new mongoose.Schema({
   userId: {
@@ -26,5 +27,24 @@ const rattingSchema = new mongoose.Schema({
 });
 
 const Rating = mongoose.model("Rating", rattingSchema);
+
+Rating.schema.pre("save", async (next) => {
+  try {
+    const product = await Product.findById(this.productId);
+    product.totalReview += 1;
+  } catch (error) {
+    next(error);
+  }
+})
+
+Rating.schema.pre("remove", async (next) => {
+  try {
+    const product = await Product.findById(this.productId);
+    if (product.totalReview > 0)
+      product.totalReview -= 1;
+  } catch (error) {
+    next(error);
+  }
+})
 
 module.exports = Rating;

@@ -70,6 +70,7 @@ exports.pagination_with_search = async (
 
     return { data, pagination };
   } catch (error) {
-    return next(new ErrorResponse(error.message));
+    console.log(error);
+
   }
 };

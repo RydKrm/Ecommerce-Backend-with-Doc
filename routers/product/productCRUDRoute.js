@@ -31,10 +31,10 @@ productCRUD.delete("/delete/:fieldId", deleteData(Product));
 productCRUD.get("/getSingle/:fieldId", read(Product, {}));
 
 // * get all product
-productCRUD.get("/getAll", read(Product, {}));
+productCRUD.get("/getAll", read(Product));
 
 // * get all true product
-productCRUD.get("/getAllTrue", read(Product, { status: true }));
+productCRUD.get("/getAllTrue", read(Product, { query: { status: true } }));
 
 // * change status
 productCRUD.patch("/updateStatus/:fieldId", updateToggle(Product, "status"));

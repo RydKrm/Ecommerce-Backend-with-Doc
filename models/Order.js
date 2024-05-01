@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Product = require("./Product");
 
 // Define schema for Order
 const orderSchema = new mongoose.Schema({
@@ -52,5 +53,26 @@ const orderDetailSchema = new mongoose.Schema({
 // Create models based on the defined schemas
 const Order = mongoose.model("Order", orderSchema);
 const OrderDetail = mongoose.model("OrderDetail", orderDetailSchema);
+
+// Increasing the total review number
+
+OrderDetail.schema.pre('save', async (next) => {
+  try {
+    const product = await Product.findById(this.productId);
+    product.totalSelling += 1;
+  } catch (error) {
+    next(error);
+  }
+})
+// Decrease the total review number
+OrderDetail.schema.pre('remove', async (next) => {
+  try {
+    const product = await Product.findById(this.productId);
+    if (product.totalSelling > 0)
+      product.totalSelling -= 1;
+  } catch (error) {
+    next(error);
+  }
+})
 
 module.exports = { Order, OrderDetail };

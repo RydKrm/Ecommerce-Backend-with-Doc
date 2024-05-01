@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Category } = require("./Category");
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -44,6 +45,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  totalComment: {
+    type: Number,
+    default: 0
+  },
   totalProductViews: {
     type: Number,
     default: 0,
@@ -61,5 +66,28 @@ const productSchema = new mongoose.Schema({
 });
 
 const Product = mongoose.model("Product", productSchema);
+
+Product.schema.post('save', async (next) => {
+  try {
+    const category = await Category.findById(this.category);
+    category.totalProduct += 1;
+    category.save();
+  } catch (error) {
+    next(error);
+  }
+})
+
+Product.schema.post('remove', async (next) => {
+  try {
+    const category = await Category.findById(this.category);
+    if (category.totalProduct > 0) {
+      category.totalProduct += 1;
+      category.save();
+    }
+
+  } catch (error) {
+    next(error);
+  }
+})
 
 module.exports = Product;
