@@ -5,6 +5,7 @@ const { update } = require("../../lib/CRUD/update");
 const { deleteData } = require("../../lib/CRUD/delete");
 const { read } = require("../../lib/CRUD/read");
 const { updateToggle } = require("../../lib/CRUD/updateToggle");
+const productController = require("../../controllers/productController/productCRUDController");
 const productCRUD = express.Router();
 
 // create product
@@ -24,16 +25,22 @@ productCRUD.post(
 // update product
 productCRUD.patch("/update/:fieldId", update(Product));
 
-// * delete product
+//  delete product
 productCRUD.delete("/delete/:fieldId", deleteData(Product));
 
-// * get single product
-productCRUD.get("/getSingle/:fieldId", read(Product, {}));
+//  get single product
+productCRUD.get(
+  "/getSingle/:fieldId",
+  read(Product, {
+    populate: { path: "category", select: "-_id name" },
+    select: "-sellingPrice",
+  }),
+);
 
-// * get all product
-productCRUD.get("/getAll", read(Product));
+//  get all product
+productCRUD.get("/getAll", productController.getAll);
 
-// * get all true product
+//  get all true product
 productCRUD.get("/getAllTrue", read(Product, { query: { status: true } }));
 
 // * change status

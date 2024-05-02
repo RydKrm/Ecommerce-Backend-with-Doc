@@ -35,19 +35,21 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  rating: { type: Number, default: 0 },
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User", // Assuming each user can only like a product once
     },
   ],
+  totalLike: { type: Number, default: 0 },
   totalSelling: {
     type: Number,
     default: 0,
   },
   totalComment: {
     type: Number,
-    default: 0
+    default: 0,
   },
   totalProductViews: {
     type: Number,
@@ -67,7 +69,7 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-Product.schema.post('save', async (next) => {
+Product.schema.post("save", async (next) => {
   try {
     const category = await Category.findById(this.category);
     category.totalProduct += 1;
@@ -75,19 +77,18 @@ Product.schema.post('save', async (next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
-Product.schema.post('remove', async (next) => {
+Product.schema.post("remove", async (next) => {
   try {
     const category = await Category.findById(this.category);
     if (category.totalProduct > 0) {
       category.totalProduct += 1;
       category.save();
     }
-
   } catch (error) {
     next(error);
   }
-})
+});
 
 module.exports = Product;

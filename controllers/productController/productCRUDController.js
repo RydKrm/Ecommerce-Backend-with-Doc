@@ -105,19 +105,12 @@ exports.delete = asyncHandler(async (req, res) => {
 // @route GET api/product/getSingle/:fieldId
 exports.getSingle = asyncHandler(async (req, res) => {
   const { fieldId } = req.params;
-  const product = await Product.findById(fieldId);
+  const product = await Product.findById(fieldId).populate({
+    path: "category",
+    select: "name",
+  });
   if (product) positiveResponse(res, "product found", product);
   else negativeResponse(res, "Product not found");
-});
-
-// @desc get all product
-// @route GET api/product/getAll/:fieldId
-exports.getAll = asyncHandler(async (req, res) => {
-  const list = await pagination(req, {}, Product);
-  positiveResponse(res, "Product list", {
-    list: list.data,
-    totalDoc: list.total,
-  });
 });
 
 // @desc update status
@@ -127,4 +120,69 @@ exports.updateStatus = asyncHandler(async (req, res) => {
   if (updateStatesById(Product, fieldId)) {
     positiveResponse(res, "Product status updated");
   } else negativeResponse(res, "Product not found by _id");
+});
+
+// @desc get all product
+// @route GET api/product/getAll/:fieldId
+// view Product by price-high-low, price-low-high, by category,
+// most selling, most liked, most review, price range
+/**
+ * price=high / price = low
+ * category = mobile
+ * mostSelling = true
+ * mostLiked = true
+ * rating = high / rating = low
+ * priceLow = 120 and priceHigh = 2000
+ */
+exports.getAll = asyncHandler(async (req, res) => {
+  const {
+    price,
+    category,
+    mostSelling,
+    mostLike,
+    rating,
+    priceHigh,
+    priceLow,
+  } = req.query;
+
+  console.log("params ", req.query);
+
+  const query = {};
+  const sort = {};
+
+  if (price && price === "low") sort["sellingPrice"] = 1;
+  else if (price && price === "high") sort["sellingPrice"] = -1;
+
+  // mostSelling
+  if (mostSelling && mostSelling === "high") sort["totalSelling"] = -1;
+  else if (mostSelling && mostSelling === "low") sort["totalSelling"] = 1;
+
+  // mostLiked
+  if (mostLike && mostLike === "high") sort["mostLike"] = -1;
+  else if (mostLike && mostLike === "low") sort["mostLike"] = 1;
+
+  // Rating
+  if (rating && rating === "high") sort["rating"] = -1;
+  else if (rating && rating === "low") sort["rating"] = 1;
+
+  // Category
+  if (category) {
+    query["category"] = category;
+  }
+
+  // Price low range to high range
+  if (priceLow && priceHigh) {
+    query["price"] = { $gte: priceLow, $lte: priceHigh };
+  }
+
+  const products = await pagination(req, query, Product, {
+    sort,
+    query,
+    populate: { path: "category", select: "name" },
+  });
+
+  positiveResponse(res, "Product list", {
+    list: products.data,
+    totalDoc: products.total,
+  });
 });

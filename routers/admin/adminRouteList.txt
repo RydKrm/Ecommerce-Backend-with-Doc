@@ -8,6 +8,13 @@ get all ratting of a product
 get product all like person
 see the total income from a product +*0.+check the product performance 
 
+Customer Action 🧑‍🤝‍🧑
+view Product by price-high-low, price-low-high, by category, most selling, most liked, most review, price range 
+add comment - remove, edit  like 
+add like  - remove like
+add, update and remove rating
+
+
 Dashboard 📺 
 total number of product, order, comment, like, rating, total earning
 list of all people who buy that product

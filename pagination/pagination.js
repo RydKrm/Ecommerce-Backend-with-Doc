@@ -4,7 +4,7 @@ exports.pagination = expressAsyncHandler(
   async (req, query, model, options = {}) => {
     let now;
     let page = 1,
-      limit = 100;
+      limit = 16;
     const total = await model.countDocuments(query);
     //check there is page in query
     if (req.query.page) {
@@ -26,20 +26,22 @@ exports.pagination = expressAsyncHandler(
       pagination.next = now + 1;
     }
 
-    let dataQuery = model
-      .find(query)
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit);
+    let sort = { createdAt: -1 };
+    if (options.sort) {
+      sort = options.sort;
+    }
+
+    let dataQuery = model.find(query).sort(sort).skip(skip).limit(limit);
 
     if (options.populate) {
-      if (typeof options.populate === "string") {
-        dataQuery = dataQuery.populate(options.populate);
-      } else if (Array.isArray(options.populate)) {
-        options.populate.forEach((populate) => {
-          dataQuery = dataQuery.populate(populate);
-        });
-      }
+      // if (typeof options.populate === "string") {
+      //   dataQuery = dataQuery.populate(options.populate);
+      // } else if (Array.isArray(options.populate)) {
+      //   options.populate.forEach((populate) => {
+      //     dataQuery = dataQuery.populate(populate);
+      //   });
+      // }
+      if (options.populate) dataQuery = dataQuery.populate(options.populate);
     }
 
     if (options.select) {
