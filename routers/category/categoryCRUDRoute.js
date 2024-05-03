@@ -15,7 +15,7 @@ categoryCRUDRouter.get("/", (req, res) => {
 
 categoryCRUDRouter.post(
   "/create",
-  create(Category, ["name", "description"], ["name", "description"]),
+  create(Category, ["name", "description"]),
 );
 
 // categoryCRUDRouter.get("/getAll", read(Category, {}, "name"));
@@ -27,10 +27,10 @@ categoryCRUDRouter.get("/getTrue", read(Category, { status: true }));
 categoryCRUDRouter.get(
   "/getAll",
   // prettier-ignore
-  read(Category,{},{
-      pagination: true,
-      select: "_id name description status",
-    },
+  read(Category, {}, {
+    pagination: true,
+    select: "_id name description status",
+  },
   ),
 );
 

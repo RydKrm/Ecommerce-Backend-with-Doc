@@ -8,7 +8,7 @@ exports.createCustomerController = asyncHandler(async (req, res) => {
   const { name, email, password, phone, address } = req.body;
   if (!name || !email || !password)
     return negativeResponse(res, "Name, email, phone is required");
-  console.log("form data ", req.body);
+  // console.log("form data ", req.body);
   //? checking for email already exists or not
   const emailChecker = await Customer.findOne({ email });
   if (emailChecker) return negativeResponse(res, "Email already exists");
@@ -19,7 +19,7 @@ exports.createCustomerController = asyncHandler(async (req, res) => {
   const customer = new Customer({ name, email, password, phone, address });
   await customer.save();
 
-  positiveResponse(res, "Account created");
+  positiveResponse(res, "Account created", { data: customer });
 });
 
 exports.loginCustomerController = asyncHandler(async (req, res) => {
@@ -61,6 +61,7 @@ exports.getSingleCustomerController = asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const customer = await Customer.findById(userId).select("-password");
   if (!customer) return negativeResponse(res, "User not found");
+  console.log("first");
 
   positiveResponse(res, "Customer found", { customer });
 });

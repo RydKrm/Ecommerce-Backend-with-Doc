@@ -4,8 +4,9 @@ const { adminGet, adminPatch, adminDelete, adminPost } = require("./function");
 
 let productId = '';
 
-describe("Testing product CRUD ", () => {
-    it("Will create a product", async () => {
+describe("Testing order processing ", () => {
+
+    it("Will create a order ", async () => {
         const product = {
             name: "Zi_friend keyboard",
             sellingPrice: 250,
@@ -24,7 +25,7 @@ describe("Testing product CRUD ", () => {
 
     })
 
-    it("Will find a product By product _id", async () => {
+    it("Will find a order for a user", async () => {
         const res = await adminGet(`/api/product/getSingle/${productId}`);
 
         expect(res.body.success).toBe(true);
@@ -32,7 +33,7 @@ describe("Testing product CRUD ", () => {
         expect(res.body.data._id).toMatch(productId);
     })
 
-    it("Update product ", async () => {
+    it("Will it update a existing order ", async () => {
         const product = {
             name: "Zi_friend keyboard T98",
             sellingPrice: 300,
@@ -48,22 +49,16 @@ describe("Testing product CRUD ", () => {
         expect(res.body.success).toBe(true);
     })
 
-    it("Get all product ", async () => {
+    it("Get all order of a user ", async () => {
         const res = await adminGet(`/api/product/getAll`);
         expect(res.body.success).toBe(true);
     })
-
-    it("Get all status true product ", async () => {
-        const res = await adminGet('/api/product/getAllTrue')
-        expect(res.body.success).toBe(true);
-    })
-
-    it("Update product status", async () => {
+    it("Update order status", async () => {
         const res = await adminPatch(`/api/product/updateStatus/${productId}`);
         expect(res.body.success).toBe(true);
     })
 
-    it("Delete a product", async () => {
+    it("Delete a order", async () => {
         const res = await adminDelete(`/api/product/delete/${productId}`);
         expect(res.body.success).toBe(true)
     })

@@ -145,8 +145,6 @@ exports.getAll = asyncHandler(async (req, res) => {
     priceLow,
   } = req.query;
 
-  console.log("params ", req.query);
-
   const query = {};
   const sort = {};
 
