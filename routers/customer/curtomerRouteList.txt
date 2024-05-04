@@ -4,8 +4,6 @@
 
 // * update profile
 
-// * update email
-
 // * update password
 
 // * forget password
