@@ -14,6 +14,7 @@ const productCRUD = require("./routers/product/productCRUDRoute");
 const productEngagement = require("./routers/product/productEngagementRoute");
 const cartRoute = require("./routers/cart/cartRoute");
 const orderCRUD = require("./routers/order/orderCRUDRoute");
+const adminRouter = require("./routers/admin/adminMain");
 
 const app = express();
 // eslint-disable-next-line
@@ -65,6 +66,7 @@ app.use("/api/category", categoryCRUDRouter);
 app.use("/api/product", productCRUD, productEngagement);
 app.use("/api/cart", cartRoute);
 app.use("/api/order", orderCRUD);
+app.use("/api/admin", adminRouter);
 
 // app.use("/products", productRoutes);
 // app.use("/orders", orderRoutes);

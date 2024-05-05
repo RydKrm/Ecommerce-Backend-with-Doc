@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-// Define Customer Schema
-const CustomerSchema = new mongoose.Schema({
+// Define Admin Schema
+const AdminSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   password: {
     type: String,
     required: true,
@@ -13,48 +17,21 @@ const CustomerSchema = new mongoose.Schema({
     unique: true, // Ensure email is unique
     lowercase: true, // Convert email to lowercase before saving
   },
-  name: {
-    type: String,
-    required: true,
-  },
   address: {
     type: String,
   },
   phone: {
     type: String,
   },
+  role: { type: String, default: "admin" },
   status: {
     type: Boolean,
     default: true,
   },
-  totalProductBuy: {
-    type: Number,
-    default: 0,
-  },
-  totalComment: {
-    type: Number,
-    default: 0,
-  },
-  totalReview: {
-    type: Number,
-    default: 0,
-  },
-  totalSpend: {
-    type: Number,
-    default: 0,
-  },
-  highestPriceProduct: {
-    type: Number,
-    default: 0,
-  },
-  lowestPriceProduct: {
-    type: Number,
-    default: 0,
-  },
 });
 
 // Hash password before saving to the database
-CustomerSchema.pre("save", async function (next) {
+AdminSchema.pre("save", async function (next) {
   try {
     // Only hash the password if it has been modified (or is new)
     if (!this.isModified("password")) {
@@ -72,7 +49,7 @@ CustomerSchema.pre("save", async function (next) {
   }
 });
 
-// Create Customer model from schema
-const Customer = mongoose.model("Customer", CustomerSchema);
+// Create Admin model from schema
+const Admin = mongoose.model("Admin", AdminSchema);
 
-module.exports = Customer;
+module.exports = Admin;

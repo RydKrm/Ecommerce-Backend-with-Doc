@@ -38,24 +38,25 @@ see total number of product buy 👍
 see all comment 👍
 see all ratting  👍
 
+Admin 🧑
+login 👍
+add a new Admin 👍
+update profile 👍
+admin edit password 👍
+admin forget password  👍
+
+
+
 Dashboard 📺 
-total number of product, order, comment, like, rating, total earning
-list of all people who buy that product
-most selling product 10 
-most buying person   
+total number of product, order, comment, like, rating, total earning 👍
+most selling product 10 👍
+most buying person   👍
 
 GRAPH 📉 
-product vs selling price  
-per day/month/year income 
-every day total amount of product selling
-day/month/year vs total amount of selling  
+product vs selling price 👍
+per day/month/year income 👍
+day/month/year vs total amount of selling 👍  
 
-Admin 🧑
-login 
-add a new Admin
-update profile
-admin edit password 
-admin forget password 
 
 
 

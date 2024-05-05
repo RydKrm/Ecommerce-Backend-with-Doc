@@ -12,7 +12,7 @@ const {
 const { customerProtect } = require("../../middlewares/customerProject");
 const { update } = require("../../lib/CRUD/update");
 const Customer = require("../../models/Customer");
-const { read } = require("../../lib/CRUD/read");
+const { getUserProfile } = require("../../lib/profile/userProfile");
 
 const customerProfileRouter = express.Router();
 
@@ -42,10 +42,16 @@ customerProfileRouter.patch(
 );
 
 // view profile
+// customerProfileRouter.get(
+//   "/profile",
+//   auth("customer"),
+//   read(Customer, { select: ["-password"] }),
+// );
+
 customerProfileRouter.get(
   "/profile",
   auth("customer"),
-  read(Customer, { select: ["-password"] }),
+  getUserProfile(Customer, "customer"),
 );
 
 // edit password

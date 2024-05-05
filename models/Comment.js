@@ -28,7 +28,7 @@ const commentSchema = new mongoose.Schema({
 const Comment = mongoose.model("Comment", commentSchema);
 
 // Middleware to increment the total comment when a new comment is added
-Comment.schema.pre('save', async (next) => {
+Comment.schema.pre("save", async (next) => {
   try {
     const product = await Product.findById(this.productId);
     product.totalComment += 1;
@@ -41,12 +41,12 @@ Comment.schema.pre('save', async (next) => {
 
     next();
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 // Middleware to decrement totalReview when a comment is deleted
-Comment.schema.pre('remove', { document: true }, async function (next) {
+Comment.schema.pre("remove", { document: true }, async function (next) {
   try {
     const product = await Product.findById(this.productId);
     if (product.totalReview > 0) {
@@ -65,6 +65,6 @@ Comment.schema.pre('remove', { document: true }, async function (next) {
   } catch (error) {
     next(error);
   }
-})
+});
 
 module.exports = { Comment, commentSchema };

@@ -35,16 +35,15 @@ Rating.schema.pre("save", async (next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 Rating.schema.pre("remove", async (next) => {
   try {
     const product = await Product.findById(this.productId);
-    if (product.totalReview > 0)
-      product.totalReview -= 1;
+    if (product.totalReview > 0) product.totalReview -= 1;
   } catch (error) {
     next(error);
   }
-})
+});
 
 module.exports = Rating;

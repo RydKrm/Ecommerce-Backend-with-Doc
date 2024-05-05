@@ -47,6 +47,7 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  // totalIncome: { type: Number, default: 0 },
   totalComment: {
     type: Number,
     default: 0,

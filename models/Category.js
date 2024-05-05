@@ -16,12 +16,12 @@ const categorySchema = new mongoose.Schema({
   },
   totalProduct: {
     type: Number,
-    default: 0
+    default: 0,
   },
   totalSells: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 });
 
 // Create Category model from schema
